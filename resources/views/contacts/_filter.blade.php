@@ -3,10 +3,9 @@
     <div class="col-md-6">
       <div class="row">
         <div class="col">
-          <select class="custom-select">
-            <option value="" selected>All Companies</option>
-            @foreach ($companies as $index => $name)
-            <option value="{{ $index }}">{{ $name }}</option>
+          <select id="filter_company_id" name="company_id" class="custom-select">            
+            @foreach ($companies as $id => $name)
+            <option {{ $id == request('company_id')? 'selected' : '' }} value="{{ $id }}">{{ $name }}</option>
             @endforeach
           </select>
         </div>
