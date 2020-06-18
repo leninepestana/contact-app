@@ -19,4 +19,7 @@ Route::get('/contacts', 'ContactController@index')->name('contacts.index');
 
 Route::get('/contacts/create', 'ContactController@create')->name('contacts.create');
 
+Route::post('/contacts', 'ContactController@store')->name('contacts.store');
+
 Route::get('/contacts/{id}', 'ContactController@show')->name('contacts.show');
+
