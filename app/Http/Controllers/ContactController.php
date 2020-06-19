@@ -72,5 +72,11 @@ class ContactController extends Controller
         return view('contacts.show', compact('contact'));
     }
 
-    
+    public function destroy($id)
+    {
+        $contact = Contact::find($id);
+        $contact->delete();
+
+        return back()->with('message', "Contact has been removed successfully.");
+    }
 }
