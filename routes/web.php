@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+/*
 Route::get('/contacts', 'ContactController@index')->name('contacts.index');
 
 Route::get('/contacts/create', 'ContactController@create')->name('contacts.create');
@@ -29,8 +29,8 @@ Route::put('/contacts/{id}', 'ContactController@update')->name('contacts.update'
 Route::delete('/contacts/{id}', 'ContactController@destroy')->name('contacts.destroy');
 
 Route::get('/contacts/{id}/edit', 'ContactController@edit')->name('contacts.edit');
-
-Auth::routes(['verify' => true]);
+*/
+Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 
@@ -70,7 +70,6 @@ Route::get('/contacts/{id}/edit', 'ContactController@edit')
 |  By assigning the auth middleware in route group, then move our 
 |  existing routes inside.
 */
-/*
 Route::middleware('auth')->group(function ()
 {
     Route::get('/contacts', 'ContactController@index')->name('contacts.index');
@@ -81,4 +80,3 @@ Route::middleware('auth')->group(function ()
     Route::delete('/contacts/{id}', 'ContactController@destroy')->name('contacts.destroy');
     Route::get('/contacts/{id}/edit', 'ContactController@edit')->name('contacts.edit');
 });
-*/
