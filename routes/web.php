@@ -34,6 +34,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 
+Route::get('/settings/account', 'Settings\AccountController@index');
+
 /* --------------------------------------------------------------
 |  Protecting Routes from being accessed by unauthenticated user
 |  --------------------------------------------------------------
