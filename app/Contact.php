@@ -27,6 +27,11 @@ class Contact extends Model
     {
         return $query->orderBy('id', 'desc');
     }
+
+    // function getRouteKeyName()
+    // {
+    //     return 'first_name';
+    // }
     
     static function boot()
     {
