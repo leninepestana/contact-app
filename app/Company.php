@@ -2,15 +2,26 @@
 
 namespace App;
 
+use App\Contact;
+use App\Scopes\SearchScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
     protected $fillable = ['name', 'address', 'website', 'email'];
 
+    public $searchColumns = ['name', 'address', 'email', 'website'];
+
     public function contacts()
     {
         return $this->hasMany(Contact::class);
+    }
+
+    public static function boot() 
+    {
+        parent::boot();
+
+        static::addGlobalScope(new SearchScope);
     }
 
     public function user()
