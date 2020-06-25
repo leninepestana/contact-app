@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Contact;
 use App\Company;
+use App\Contact;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -35,20 +38,27 @@ class ContactController extends Controller
 
     
 
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'address' => 'required',
-            'company_id' => 'required|exists:companies,id',
-        ]);
+        //$request->validate($this->validationRules());
         
         $request->user()->contacts()->create($request->all());
 
         return redirect()->route('contacts.index')->with('message', "Contact has been added successfully.");
     }
+
+
+    // protected function validationRules()
+    // {
+    //     return [
+    //         'first_name' => 'required',
+    //         'last_name' => 'required',
+    //         'email' => 'required|email',
+    //         'address' => 'required',
+    //         'company_id' => 'required|exists:companies,id',
+    //     ];
+    // }
+
 
     public function edit(Contact $contact)
     {
@@ -58,15 +68,9 @@ class ContactController extends Controller
         return view('/contacts.edit', compact('companies', 'contact'));
     }
 
-    public function update(Contact $contact, Request $request)
+    public function update(Contact $contact, ContactRequest $request)
     {      
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'address' => 'required',
-            'company_id' => 'required|exists:companies,id',
-        ]);
+        //$request->validate($this->validationRules());
         
         //$contact = Contact::findOrFail($id);
         $contact->update($request->all());
