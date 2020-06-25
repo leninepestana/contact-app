@@ -13,6 +13,13 @@ class ContactRequest extends FormRequest
      */
     public function authorize()
     {
+        // With dd we can retrieve the value and the 
+        // id of current route
+        // dd($this->route('contact'));
+
+        // The method method() will return what we are see 
+        // when request is being sent
+        //dd($this->method());
         // This method checks if the assigned user has the permission to do something
         return true;
     }
@@ -30,6 +37,33 @@ class ContactRequest extends FormRequest
             'email' => 'required|email',
             'address' => 'required',
             'company_id' => 'required|exists:companies,id',
+        ];
+    }
+
+    // Method is resposible to customize 
+    // validation messages erros
+    public function attributes()
+    {
+        return [
+            'company_id' => 'company'
+        ];
+    }
+
+    // Method is resposible to customize
+    // message error validation in this case 
+    // (e.g. field_key_email.validation_rules)
+    public function messages()
+    {
+        /*
+        return [
+            'email.email' => "The email that you entered is not valid.",
+            "first_name.required" => "The first name field cannot be empty.",
+            "email.required" => "The email field cannot be empty."
+        ];
+        */
+        return [
+            'email.email' => "The email that you entered is not valid.",
+            "*.required" => "The :attribute field cannot be empty."
         ];
     }
 }
