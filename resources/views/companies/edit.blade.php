@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Contact App | Create')
+@section('title', 'Contact App | Edit Company')
 @section('content')
 <main class="py-5">
     <div class="container">
@@ -7,12 +7,12 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header card-title">
-              <strong>Edit Contact</strong>
+              <strong>Edit Company</strong>
             </div>
-            <form action="{{ route('contacts.update', $contact->id) }}" method="POST">
+            <form action="{{ route('companies.update', $company->id) }}" method="POST">
                 @method('PUT')
               @csrf 
-              @include('contacts._form')
+              @include('companies._form')
             </form>
           </div>
         </div>

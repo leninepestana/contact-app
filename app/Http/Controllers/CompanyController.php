@@ -46,7 +46,7 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        $request->user()->companies()-create($request->all());
+        $request->user()->companies()->create($request->all());
         return redirect()->route('companies.index')->with('message', "Company added successfully.");
     }
 
