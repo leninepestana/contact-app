@@ -33,6 +33,7 @@ class Company extends Model
     public static function userCompanies()
     {
         //return auth()->user()->companies()->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
-        return self::where('user_id', auth()->id())->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+        //return self::where('user_id', auth()->id())->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
+        return self::withoutGlobalScopes()->where('user_id', auth()->id())->orderBy('name')->pluck('name', 'id')->prepend('All Companies', '');
     }
 }
