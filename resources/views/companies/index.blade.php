@@ -53,7 +53,7 @@
                 </tbody>
               </table> 
 
-              {{ $companies->appends(request()->only('id'))->links() }}
+              {{ $companies->appends(request()->only('id', 'search'))->links() }}
               
             </div>
           </div>
