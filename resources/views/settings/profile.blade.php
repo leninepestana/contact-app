@@ -73,6 +73,9 @@
                                   <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
                               </div>
                           </div>
+                          @error('profile_picture')
+                            <div class = "text-danger">{{ $message }}</div>
+                          @enderror
                       </div>
                     </div>
                   </div>

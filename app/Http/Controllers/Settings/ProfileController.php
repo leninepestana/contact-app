@@ -22,7 +22,15 @@ class ProfileController extends Controller
 
     public function update(ProfileUpdateRequest $request)
     {
-        $request->user()->update($request->validated());
+        //dump($request->file('profile_picture'));
+        //dd($request->profile_picture);
+        $picture = $request->profile_picture;
+        $picture->move(public_path('upload'), $fileName = 'profile-picture.jpg');
+
+        $profileData = $request->validated();
+        $profileData['profile_picture'] = $fileName;
+
+        $request->user()->update($profileData);
 
         return back()->with('message', "Profile has been updated successfully.");
     }
