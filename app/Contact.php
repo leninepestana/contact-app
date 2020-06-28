@@ -11,10 +11,12 @@ class Contact extends Model
     protected $fillable = ['first_name', 'last_name', 'phone', 'email', 'address', 'company_id', 'user_id'];
 
     public $filterColumns = ['company_id'];
+
+    
      
     public function company()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class)->withoutGlobalScopes();
     }
 
     public function user()
